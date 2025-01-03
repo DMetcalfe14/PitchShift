@@ -1,7 +1,7 @@
 # Import StreamController modules
 from src.backend.PluginManager.ActionBase import ActionBase
 from src.backend.DeckManagement.DeckController import DeckController
-frin src.backend.DeckManagement.InputIdentifier import Input, InputEvent
+from src.backend.DeckManagement.InputIdentifier import Input, InputEvent
 from src.backend.PageManagement.Page import Page
 from src.backend.PluginManager.PluginBase import PluginBase
 
