@@ -5,30 +5,22 @@ from src.backend.DeckManagement.InputIdentifier import Input, InputEvent
 from src.backend.PageManagement.Page import Page
 from src.backend.PluginManager.PluginBase import PluginBase
 
+import os
+
 class PitchShift(ActionBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.count: int = 0
+        backend_path = os.path.join(self.plugin_base.PATH, "actions", "PitchShift", "backend", "backend.py") 
+        self.launch_backend(backend_path = backend_path, open_in_terminal = True) 
         
     def on_ready(self):
-        self.set_center_label(str(self.count))
-        
-    # def on_key_down(self):
-    #     self.count += 1
-    #     self.set_center_label(str(self.count))
-
+        self.set_center_label(str(self.backend.get_count()))
+    
     def event_callback(self, event: InputEvent, data: dict = None):
         if event == Input.Key.Events.SHORT_UP:
-            self.on_short_press()
+            self.backend.on_short_press()
+            self.set_center_label(str(self.backend.get_count()))
         elif event == Input.Key.Events.HOLD_START:
-            self.on_long_press()
-
-    def on_long_press(self):
-        self.count -= 1
-        self.set_center_label(str(self.count))
-
-    def on_short_press(self):
-        self.count += 1
-        self.set_center_label(str(self.count))
-        
+            self.backend.on_long_press()
+            self.set_center_label(str(self.backend.get_count()))
