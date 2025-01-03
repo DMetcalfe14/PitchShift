@@ -8,6 +8,8 @@ from src.backend.PluginManager.PluginBase import PluginBase
 import os
 from loguru import logger as log 
 
+logger.add("debug.log", level="DEBUG")
+
 class PitchShift(ActionBase):
     def __init__(self, action_id: str, action_name: str,
                  deck_controller: DeckController, page: Page, coords: str, plugin_base: PluginBase):
