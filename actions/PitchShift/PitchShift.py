@@ -6,6 +6,7 @@ from src.backend.PageManagement.Page import Page
 from src.backend.PluginManager.PluginBase import PluginBase
 
 import os
+from loguru import logger as log 
 
 class PitchShift(ActionBase):
     def __init__(self, action_id: str, action_name: str,
@@ -17,8 +18,15 @@ class PitchShift(ActionBase):
         self.launch_backend(backend_path = backend_path, open_in_terminal = True) 
         
     def on_ready(self):
-        self.set_center_label(str(self.backend.get_count()))
-    
+        try:
+            count = str(self.backend.get_count())
+        except Exception as e:
+            log.error(e)
+            self.show_error()
+            return
+
+        self.set_center_label(count)
+
     def event_callback(self, event: InputEvent, data: dict = None):
         if event == Input.Key.Events.SHORT_UP:
             self.backend.on_short_press()
