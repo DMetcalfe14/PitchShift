@@ -5,7 +5,6 @@
     "name": "Pitch Shift",
     "app-version": "1.0.0",
     "author": "Douglas Metcalfe",
-    "github": "http://192.168.1.200:3002/douglas/PitchShift", 
     "descriptions": {
         "en_US": "A Pitch Shifter to control the RubberBand Pitch Shifter plugin within Carla."
     }

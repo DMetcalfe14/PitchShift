@@ -21,7 +21,7 @@ class PluginTemplate(PluginBase):
         # Register plugin
         self.register(
             plugin_name = "Pitch Shift",
-            github_repo = "http://192.168.1.200:3002/douglas/PitchShift",
+            github_repo = "https://github.com/DMetcalfe14/PitchShift",
             plugin_version = "1.0.0",
             app_version = "1.1.1-alpha"
         )
